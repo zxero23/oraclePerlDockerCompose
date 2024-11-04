@@ -1,0 +1,13 @@
+version: '3'
+services:
+  oracleclient:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./tns:/etc/oracle  
+      - ./exportedData:/exportedData
+      - ./perl:/perl 
+    env_file:
+      - .env
+    entrypoint: ["perl", "/perl/mail.pl"]
